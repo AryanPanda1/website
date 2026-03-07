@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aryan Panda | Student Portfolio</title>
+  <meta name="description" content="Aryan Panda - student portfolio with activities, coding profiles, skills, and resume." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --card: #fffdf8;
+      --text: #1a1a1a;
+      --muted: #5f5a52;
+      --line: #ddd6c8;
+      --accent: #9f3d24;
+      --accent-soft: #f1e6df;
+      --max: 940px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, #fbf8f1 0%, var(--bg) 45%, #f3eee3 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      width: min(var(--max), calc(100% - 2.5rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: color-mix(in srgb, var(--bg) 88%, white 12%);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(6px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    .links a {
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .links a:hover,
+    .links a:focus-visible {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      outline: none;
+    }
+
+    main { padding: 3.2rem 0 4rem; }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: clamp(1.5rem, 3.5vw, 2.6rem);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.8rem;
+      color: var(--accent);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.3rem);
+      margin-bottom: 0.85rem;
+    }
+
+    .intro {
+      max-width: 62ch;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .hero-actions {
+      margin-top: 1.4rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border-radius: 999px;
+      padding: 0.62rem 1.05rem;
+      border: 1px solid var(--line);
+      background: white;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .section {
+      margin-top: 2.1rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: clamp(1.2rem, 3vw, 2rem);
+    }
+
+    .section h2 {
+      font-size: clamp(1.7rem, 4.2vw, 2.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .section-lead {
+      margin: -0.35rem 0 1rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .activity-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .activity {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem;
+      background: #fff;
+    }
+
+    .activity .date {
+      margin: 0 0 0.35rem;
+      font-size: 0.82rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .activity h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .activity p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.32rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .bars {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.86rem;
+      margin-bottom: 0.25rem;
+      color: var(--muted);
+    }
+
+    .bar-track {
+      height: 8px;
+      background: #efe7da;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #b35339, var(--accent));
+      transform-origin: left center;
+      transition: transform 0.6s ease;
+    }
+
+    .eye-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      background: linear-gradient(180deg, #fff 0%, #faf5ec 100%);
+    }
+
+    .eyes {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .eye {
+      width: 84px;
+      height: 84px;
+      border-radius: 999px;
+      background: #fff;
+      border: 2px solid #2a2929;
+      position: relative;
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    .pupil {
+      width: 25px;
+      height: 25px;
+      border-radius: 999px;
+      background: #1d1d1d;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      will-change: transform;
+    }
+
+    .pupil::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.6);
+      top: 4px;
+      left: 5px;
+    }
+
+    .mini-note {
+      margin: 0;
+      font-size: 0.83rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .code-chip {
+      margin-top: 0.9rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.85rem;
+      padding: 0.55rem 0.65rem;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+
+    .profile-links {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 0.3rem;
+    }
+
+    .profile-link {
+      display: block;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.8rem 0.9rem;
+      background: #fff;
+      font-size: 0.95rem;
+      word-break: break-all;
+    }
+
+    .profile-link:hover,
+    .profile-link:focus-visible {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      outline: none;
+    }
+
+    footer {
+      margin-top: 2rem;
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .skill-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(var(--max), calc(100% - 1.4rem)); }
+      .links { gap: 0.85rem; font-size: 0.88rem; }
+      .hero-actions { width: 100%; }
+      .btn { width: 100%; }
+      .eye { width: 72px; height: 72px; }
+      .pupil { width: 22px; height: 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">Aryan Panda</a>
+      <nav class="links" aria-label="Primary">
+        <a href="#activities">Activities</a>
+        <a href="#skills-lab">Skills Lab</a>
+        <a href="#profiles">Profiles</a>
+        <a href="https://docs.google.com/document/d/1CTGSymq6cQpWXqUIUTv-9LyD6rJw0a5NGZbrZObeYmc/edit?tab=t.0" target="_blank" rel="noopener noreferrer">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <p class="eyebrow">Student Portfolio</p>
+      <h1>Aryan Panda</h1>
+      <p class="intro">
+        High school student interested in technology, research, and leadership. I enjoy building projects, learning from mentors, and creating communities around STEM.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="https://docs.google.com/document/d/1CTGSymq6cQpWXqUIUTv-9LyD6rJw0a5NGZbrZObeYmc/edit?tab=t.0" target="_blank" rel="noopener noreferrer">View Resume</a>
+        <a class="btn" href="https://github.com/AryanPanda1" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn" href="https://leetcode.com/u/xajdyfgvedr/" target="_blank" rel="noopener noreferrer">LeetCode</a>
+      </div>
+    </section>
+
+    <section class="section" id="activities">
+      <h2>Activities</h2>
+      <div class="activity-list">
+        <article class="activity">
+          <p class="date">June - August 2024</p>
+          <h3>Industry Mentorship</h3>
+          <p>Participated in an industry mentorship experience focused on professional communication, problem solving, and real project workflows.</p>
+        </article>
+        <article class="activity">
+          <p class="date">June - August 2024</p>
+          <h3>Tutoring</h3>
+          <p>Tutoring the SAT through Schoolhouse.world</p>
+        </article>
+        <article class="activity">
+          <p class="date">2024</p>
+          <h3>Founder of a STEM Club</h3>
+          <p>Started and led a student STEM club, organized meetings, and helped peers explore technology through hands-on activities.</p>
+        </article>
+
+        <article class="activity">
+          <p class="date">2024 - Present</p>
+          <h3>Research</h3>
+          <p>Ongoing research work involving investigation, documentation, and presenting findings in a structured way. Working under the guidance of Maheep Chaudhary, and looking to publish a paper in April</p>
+        </article>
+        <article class="activity">
+          <p class="date">2025 - Present</p>
+          <h3>Shadowing</h3>
+          <p>Shadowing a professional software engineer in the field. Learning how the industry works, how companies process information, and more.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="skills-lab">
+      <h2>HTML, CSS, and Javascript Skills Lab</h2>
+      <p class="section-lead">A live mini showcase. Move your cursor and the eyes will follow it. This section demonstrates layout, styling, and Javascript fundamentals.</p>
+
+      <div class="skill-grid">
+        <article class="card">
+          <h3>Skill Breakdown</h3>
+          <div class="bars" role="list" aria-label="Skill levels">
+            <div role="listitem">
+              <div class="bar-label"><span>HTML</span><span>Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width: 88%"></div></div>
+            </div>
+            <div role="listitem">
+              <div class="bar-label"><span>CSS</span><span>Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width: 84%"></div></div>
+            </div>
+            <div role="listitem">
+              <div class="bar-label"><span>Javascript</span><span>Strong</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width: 78%"></div></div>
+            </div>
+          </div>
+          <p class="code-chip">public class Builder { String stack = "HTML + CSS + Javascript"; }</p>
+        </article>
+
+        <article class="card eye-wrap" aria-label="Interactive eye tracker demo">
+          <div class="eyes">
+            <div class="eye"><div class="pupil"></div></div>
+            <div class="eye"><div class="pupil"></div></div>
+          </div>
+          <p class="mini-note">Interactive demo built with JavaScript + CSS transforms.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="profiles">
+      <h2>Profiles</h2>
+      <div class="profile-links">
+        <a class="profile-link" href="https://github.com/AryanPanda1" target="_blank" rel="noopener noreferrer">GitHub: https://github.com/AryanPanda1</a>
+        <a class="profile-link" href="https://leetcode.com/u/xajdyfgvedr/" target="_blank" rel="noopener noreferrer">LeetCode: https://leetcode.com/u/xajdyfgvedr/</a>
+        <a class="profile-link" href="https://docs.google.com/document/d/1CTGSymq6cQpWXqUIUTv-9LyD6rJw0a5NGZbrZObeYmc/edit?tab=t.0" target="_blank" rel="noopener noreferrer">Resume: https://docs.google.com/document/d/1CTGSymq6cQpWXqUIUTv-9LyD6rJw0a5NGZbrZObeYmc/edit?tab=t.0</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Aryan Panda
+    </footer>
+  </main>
+
+  <script>
+    const eyes = document.querySelectorAll('.eye');
+    const pupils = document.querySelectorAll('.pupil');
+
+    function centerPupils() {
+      pupils.forEach((pupil) => {
+        pupil.style.transform = 'translate(-50%, -50%)';
+      });
+    }
+
+    function movePupil(eye, pupil, x, y) {
+      const rect = eye.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = x - cx;
+      const dy = y - cy;
+      const angle = Math.atan2(dy, dx);
+      const max = rect.width * 0.18;
+      const px = Math.cos(angle) * max;
+      const py = Math.sin(angle) * max;
+      pupil.style.transform = `translate(calc(-50% + ${px}px), calc(-50% + ${py}px))`;
+    }
+
+    document.addEventListener('pointermove', (event) => {
+      eyes.forEach((eye, index) => {
+        movePupil(eye, pupils[index], event.clientX, event.clientY);
+      });
+    });
+
+    document.addEventListener('mouseleave', centerPupils);
+    window.addEventListener('blur', centerPupils);
+  </script>
+</body>
+</html>
